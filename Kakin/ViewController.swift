@@ -8,7 +8,7 @@
 
 import UIKit
 import StoreKit
-
+// TODO: 処理を綺麗に
 class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver{
     
     @IBOutlet var lblAd: UILabel!
