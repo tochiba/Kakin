@@ -18,16 +18,15 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
     @IBOutlet var outAddCoins: UIButton!
     var coins = 50
     
-    // 1
     override func viewDidLoad() {
         super.viewDidLoad()
         outRemoveAds.enabled = false
         outAddCoins.enabled = false
         
-        // Set IAPS
+        // 消耗がた com.koganepj.Kakin.addcoins の実機確認できた
         if(SKPaymentQueue.canMakePayments()) {
             print("IAP is enabled, loading")
-            let productID:NSSet = NSSet(objects: "com.koganepj.Kakin.addcoins")
+            let productID: NSSet = NSSet(objects: "com.koganepj.Kakin.addcoins")
             let request: SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
             
             request.delegate = self
@@ -38,7 +37,6 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
         
     }
     
-    // 2
     @IBAction func btnRemoveAds(sender: UIButton) {
         for product in list {
             let prodID = product.productIdentifier
@@ -51,7 +49,6 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
         
     }
     
-    // 3
     @IBAction func btnAddCoins(sender: UIButton) {
         for product in list {
             let prodID = product.productIdentifier
@@ -64,12 +61,10 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
         
     }
     
-    // 4
     func removeAds() {
         lblAd.removeFromSuperview()
     }
     
-    // 5
     func addCoins() {
         coins = coins + 50
         lblCoinAmount.text = "\(coins)"
@@ -131,7 +126,7 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
             case "seemu.iap.removeads":
                 print("remove ads")
                 removeAds()
-            case "seemu.iap.addcoins":
+            case "com.koganepj.Kakin.addcoins":
                 print("add coins to account")
                 addCoins()
             default:
@@ -160,7 +155,7 @@ class ViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTran
                 case "seemu.iap.removeads":
                     print("remove ads")
                     removeAds()
-                case "seemu.iap.addcoins":
+                case "com.koganepj.Kakin.addcoins":
                     print("add coins to account")
                     addCoins()
                 default:
